@@ -8,8 +8,8 @@ help:
 	poetry run gendiff -h
 
 lint:
-	poetry run flake8 brain_games
-	poetry run pylint brain_games
+	poetry run flake8 gendiff
+	poetry run pylint gendiff
 
 build:
 	poetry build
