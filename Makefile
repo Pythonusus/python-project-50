@@ -11,6 +11,14 @@ lint:
 	poetry run flake8 gendiff
 	poetry run pylint gendiff
 
+test:
+	poetry run pytest
+
+test-coverage:
+	poetry run pytest --cov
+
+check: test lint
+
 build:
 	poetry build
 
@@ -23,4 +31,4 @@ package-install:
 package-reinstall:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
-.PHONY: install gendiff help lint build publish package-install package-reinstall
+.PHONY: install gendiff help lint test test-coverage check build publish package-install package-reinstall
