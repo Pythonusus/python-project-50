@@ -17,6 +17,9 @@ test:
 test-coverage:
 	poetry run pytest --cov
 
+test-coverage-сс:
+	poetry run pytest --cov=gendiff --cov-report xml
+
 check: test lint
 
 build:
@@ -31,4 +34,4 @@ package-install:
 package-reinstall:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
-.PHONY: install gendiff help lint test test-coverage check build publish package-install package-reinstall
+.PHONY: install gendiff help lint test test-coverage test-coverage-сс check build publish package-install package-reinstall
