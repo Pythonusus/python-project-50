@@ -9,6 +9,8 @@ help:
 
 lint:
 	poetry run flake8 gendiff
+
+pylint:
 	poetry run pylint gendiff
 
 test:
@@ -34,4 +36,4 @@ package-install:
 package-reinstall:
 	python3 -m pip install --user --force-reinstall dist/*.whl
 
-.PHONY: install gendiff help lint test test-coverage test-coverage-сс check build publish package-install package-reinstall
+.PHONY: install gendiff help lint pylint test test-coverage test-coverage-сс check build publish package-install package-reinstall
