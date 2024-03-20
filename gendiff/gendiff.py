@@ -1,5 +1,24 @@
 import json
 
+import yaml
+
+
+def load_json(file_path):
+    data = json.load(open(file_path))  # dict
+    return data
+
+
+def load_yaml(file_path):
+    data = yaml.safe_load(open(file_path))
+    return data
+
+
+def select_loader(file_path):
+    if file_path.endswith('json'):
+        return load_json
+    if file_path.endswith('yaml') or file_path.endswith('yml'):
+        return load_yaml
+
 
 def edit_result_string(string):
     edited_string = string.replace('True', 'true')
@@ -8,9 +27,7 @@ def edit_result_string(string):
     return edited_string
 
 
-def generate_diff(file_path1, file_path2):
-    data1 = json.load(open(file_path1))  # dict
-    data2 = json.load(open(file_path2))  # dict
+def compare_data(data1, data2):
     diffs = ['{']
 
     keys = sorted(set().union(data1.keys(), data2.keys()))
@@ -29,3 +46,12 @@ def generate_diff(file_path1, file_path2):
     diffs.append('}')
     result = '\n'.join(diffs)
     return edit_result_string(result)
+
+
+def generate_diff(file_path1, file_path2):
+    file1_loader = select_loader(file_path1)
+    file2_loader = select_loader(file_path2)
+    data1 = file1_loader(file_path1)
+    data2 = file2_loader(file_path2)
+    diff = compare_data(data1, data2)
+    return diff
