@@ -3,8 +3,8 @@ from gendiff.gendiff import generate_diff
 
 def test_gendiff_json():
     assert generate_diff(
-        'gendiff/tests/fixtures/test_file1.json',
-        'gendiff/tests/fixtures/test_file2.json'
+        'gendiff/tests/fixtures/flat1.json',
+        'gendiff/tests/fixtures/flat2.json'
     ) == (
         '{\n'
         ' - follow: false\n'
@@ -19,8 +19,8 @@ def test_gendiff_json():
 
 def test_gendiff_yaml():
     assert generate_diff(
-        'gendiff/tests/fixtures/test_file1.yaml',
-        'gendiff/tests/fixtures/test_file2.yml'
+        'gendiff/tests/fixtures/flat1.yaml',
+        'gendiff/tests/fixtures/flat2.yml'
     ) == (
         '{\n'
         ' - follow: false\n'
