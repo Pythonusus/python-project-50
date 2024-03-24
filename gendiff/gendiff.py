@@ -4,12 +4,14 @@ import yaml
 
 
 def load_json(file_path):
-    data = json.load(open(file_path))  # dict
+    with open(file_path) as f:
+        data = json.load(f)  # dict
     return data
 
 
 def load_yaml(file_path):
-    data = yaml.safe_load(open(file_path))
+    with open(file_path) as f:
+        data = yaml.safe_load(f)
     return data
 
 
@@ -35,14 +37,14 @@ def compare_data(data1, data2):
         value1 = data1.get(key)
         value2 = data2.get(key)
         if value1 is None:  # d.get(keys) returns None if key not in d
-            diffs.append(f' + {key}: {data2[key]}')
+            diffs.append(f'  + {key}: {data2[key]}')
         elif value2 is None:
-            diffs.append(f' - {key}: {data1[key]}')
+            diffs.append(f'  - {key}: {data1[key]}')
         elif value1 == value2:
-            diffs.append(f' {key}: {data1[key]}')
+            diffs.append(f'    {key}: {data1[key]}')
         else:
-            diffs.append(f' - {key}: {data1[key]}')
-            diffs.append(f' + {key}: {data2[key]}')
+            diffs.append(f'  - {key}: {data1[key]}')
+            diffs.append(f'  + {key}: {data2[key]}')
     diffs.append('}')
     result = '\n'.join(diffs)
     return edit_result_string(result)
