@@ -50,10 +50,11 @@ def compare_data(data1, data2):
     return edit_result_string(result)
 
 
-def generate_diff(file_path1, file_path2):
+def generate_diff(file_path1, file_path2, formatter='stylish'):
     file1_loader = select_loader(file_path1)
     file2_loader = select_loader(file_path2)
     data1 = file1_loader(file_path1)
     data2 = file2_loader(file_path2)
     diff = compare_data(data1, data2)
-    return diff
+    format_data = select_formatter(formatter)
+    return format_data(diff)
