@@ -1,39 +1,6 @@
+from gendiff.data_comparator import compare_data
 from gendiff.formatters.formatter_router import select_formatter
 from gendiff.loaders import select_loader
-
-
-def compare_data(data1, data2):
-    diff = dict()
-
-    keys = sorted(set().union(data1.keys(), data2.keys()))
-    for key in keys:
-        value1 = data1.get(key)
-        value2 = data2.get(key)
-        if isinstance(value1, dict) and isinstance(value2, dict):
-            nested_diff = compare_data(value1, value2)
-            diff[key] = nested_diff
-        elif value1 is None:  # d.get(keys) returns None if key not in d
-            diff[key] = {
-                'value': value2,
-                'status': 'added'
-            }
-        elif value2 is None:  # d.get(keys) returns None if key not in d
-            diff[key] = {
-                'value': value1,
-                'status': 'deleted'
-            }
-        elif value1 == value2:
-            diff[key] = {
-                'value': value1,
-                'status': 'unchanged'
-            }
-        else:
-            diff[key] = {
-                'value1': value1,
-                'value2': value2,
-                'status': 'modified'
-            }
-    return diff
 
 
 def generate_diff(file_path1, file_path2, formatter='stylish'):
