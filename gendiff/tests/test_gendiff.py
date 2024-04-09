@@ -9,15 +9,29 @@ NESTED1_JSON = 'gendiff/tests/fixtures/nested1.json'
 NESTED2_JSON = 'gendiff/tests/fixtures/nested2.json'
 NESTED1_YAML = 'gendiff/tests/fixtures/nested1.yml'
 NESTED2_YAML = 'gendiff/tests/fixtures/nested2.yaml'
-EXPECTED_FLAT = 'gendiff/tests/fixtures/expected_flat.txt'
-EXPECTED_NESTED = 'gendiff/tests/fixtures/expected_nested.txt'
+EXPECTED_FLAT_STYLISH = 'gendiff/tests/fixtures/expected_flat_stylish.txt'
+EXPECTED_NESTED_STYLISH = 'gendiff/tests/fixtures/expected_nested_stylish.txt'
+EXPECTED_FLAT_PLAIN = 'gendiff/tests/fixtures/expected_flat_plain.txt'
+EXPECTED_NESTED_PLAIN = 'gendiff/tests/fixtures/expected_nested_plain.txt'
 
 
 @pytest.mark.parametrize('file_path1, file_path2, expected_file_path', [
-    (FLAT1_JSON, FLAT2_JSON, EXPECTED_FLAT),
-    (FLAT1_YAML, FLAT2_YAML, EXPECTED_FLAT),
-    (NESTED1_JSON, NESTED2_JSON, EXPECTED_NESTED),
-    (NESTED1_YAML, NESTED2_YAML, EXPECTED_NESTED)])
-def test_gendiff(file_path1, file_path2, expected_file_path):
+    (FLAT1_JSON, FLAT2_JSON, EXPECTED_FLAT_STYLISH),
+    (FLAT1_YAML, FLAT2_YAML, EXPECTED_FLAT_STYLISH),
+    (NESTED1_JSON, NESTED2_JSON, EXPECTED_NESTED_STYLISH),
+    (NESTED1_YAML, NESTED2_YAML, EXPECTED_NESTED_STYLISH)])
+def test_gendiff_stylish(file_path1, file_path2, expected_file_path):
     with open(expected_file_path) as expected:
         assert generate_diff(file_path1, file_path2) == expected.read()
+
+
+@pytest.mark.parametrize('file_path1, file_path2, expected_file_path', [
+    (FLAT1_JSON, FLAT2_JSON, EXPECTED_FLAT_PLAIN),
+    (FLAT1_YAML, FLAT2_YAML, EXPECTED_FLAT_PLAIN),
+    (NESTED1_JSON, NESTED2_JSON, EXPECTED_NESTED_PLAIN),
+    (NESTED1_YAML, NESTED2_YAML, EXPECTED_NESTED_PLAIN)])
+def test_gendiff_plain(file_path1, file_path2, expected_file_path):
+    with open(expected_file_path) as expected:
+        assert generate_diff(
+            file_path1, file_path2, formatter='plain'
+        ) == expected.read()
