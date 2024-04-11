@@ -58,5 +58,4 @@ def format_data(diff):
         result = '\n'.join(result)
         return result
 
-    print(edit_result_string(inner(diff, 0)))
     return edit_result_string(inner(diff, 0))
