@@ -37,9 +37,9 @@ You can also use GenDiff as a library or dependency to your project.
 
 ### Prerequisites
 
-1. Python >= 3.12
+1. Python >= 3.11
 2. pip >= 23.3.1
-3. Poetry >= 1.7.1
+3. Poetry >= 1.8.2
 
 ### Installing
 
