@@ -1,6 +1,6 @@
 import pytest
 from gendiff.formatters.formatter_router import FORMATTERS
-from gendiff.gendiff import generate_diff
+from gendiff.generate_diff import generate_diff
 
 FLAT1_JSON = 'gendiff/tests/fixtures/flat1.json'
 FLAT2_JSON = 'gendiff/tests/fixtures/flat2.json'
