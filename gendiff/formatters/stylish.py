@@ -20,6 +20,8 @@ def stringify(data, depth):
 
 
 def format_data(diff):
+    if not diff:
+        return ''
 
     def inner(diff, depth):
         current_indent = REPLACER * SPACES_COUNT * depth

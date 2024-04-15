@@ -10,6 +10,8 @@ def stringify(value):
 
 
 def format_data(diff):
+    if not diff:
+        return ''
 
     def inner(diff, property_path=[]):
         result = []
