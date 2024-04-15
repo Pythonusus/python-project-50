@@ -23,8 +23,8 @@
 - [Authors](#authors)
 - [Logo](#logo)
 
-
-## 🧐 About <a name = "about"></a>
+<a name = "about"></a>
+## 🧐 About
 
 GenDiff is a command-line utility that compares two JSON or YAML files and generates a difference.
 
@@ -32,7 +32,8 @@ GenDiff supports different formats of output such as TXT, JSON or YAML.
 
 You can also use GenDiff as a library or dependency to your project.
 
-## 🏁 Getting Started <a name = "getting_started"></a>
+<a name = "getting_started"></a>
+## 🏁 Getting Started
 
 ### Prerequisites
 
@@ -75,7 +76,8 @@ To set it permanently for all future bash sessions add `export PATH=$PATH:'path/
 ### Installation example:
 [![asciicast](https://asciinema.org/a/SWYYefdsYygkavDCyW1gInlrk.svg)](https://asciinema.org/a/SWYYefdsYygkavDCyW1gInlrk)
 
-## 🎈 Usage <a name="usage"></a>
+<a name="usage"></a>
+## 🎈 Usage
 
 ### `gendiff` command will become available in the command line after installation
 
@@ -115,16 +117,19 @@ gendiff path/to/file1 path/to/file2 -f plain
 gendiff -h
 ```
 
-## ⛏️ Built Using <a name = "built_using"></a>
+<a name = "built_using"></a>
+## ⛏️ Built Using
 
 - [Poetry](https://python-poetry.org) - Python packaging and dependency management tool
 - [PyYAML](https://pyyaml.org) - A full-featured YAML framework for the Python programming language
 
-## ✍️ Authors <a name = "authors"></a>
+<a name = "authors"></a>
+## ✍️ Authors
 
 [@Pythonusus](https://github.com/kylelobo)
 
-## Logo <a name = "logo"></a>
+<a name = "logo"></a>
+## Logo
 Made with [Ideogram AI](https://ideogram.ai/)
 
 Stored at [imgur.com](https://imgur.com/)
