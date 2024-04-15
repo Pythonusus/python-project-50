@@ -1,5 +1,7 @@
 import argparse
 
+from gendiff.formatters.formatter_router import FORMATTERS
+
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -10,7 +12,8 @@ def parse_args():
     parser.add_argument('second_file')
     parser.add_argument(
         '-f', '--format',
-        help='set format of output (default: stylish)',
+        choices=FORMATTERS.keys(),
+        help=('set format of output (default: stylish)'),
         default='stylish'
     )
     args = parser.parse_args()
