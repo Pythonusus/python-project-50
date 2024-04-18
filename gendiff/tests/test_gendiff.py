@@ -22,6 +22,8 @@ EMPTY_JSON = 'gendiff/tests/fixtures/empty.json'
 EMPTY_YAML = 'gendiff/tests/fixtures/empty.yaml'
 EXPECTED_EMPTY_FILE1 = 'gendiff/tests/fixtures/expected_empty_file1.txt'
 EXPECTED_EMPTY_FILE2 = 'gendiff/tests/fixtures/expected_empty_file2.txt'
+UNSUPPORTED_FILE_EXT1 = 'gendiff/tests/fixtures/unsupported1.mp3'
+UNSUPPORTED_FILE_EXT2 = 'gendiff/tests/fixtures/unsupported2'
 
 
 @pytest.mark.parametrize('file_path1, file_path2, expected_file_path', [
@@ -100,3 +102,9 @@ def test_unsupported_extension(file_path1, file_path2, expected_message):
     with pytest.raises(ValueError) as exception:
         generate_diff(file_path1, file_path2)
     assert str(exception.value) == expected_message
+
+
+def test_unsupported_format():
+    with pytest.raises(ValueError) as exception:
+        generate_diff(FLAT1_JSON, FLAT2_JSON, 'unsupported_format')
+    assert str(exception.value) == 'Unsupported format: unsupported_format'
