@@ -45,7 +45,7 @@ def format_data(diff):
                     result.append(f'{deep_indent}{key}: {str_value}')
                 case 'modified':
                     new_value = diff[key].get('new_value')
-                    str_new_value = stringify(new_value, depth)
+                    str_new_value = stringify(new_value, depth + 1)
                     result.append(
                         f'{deep_indent_with_offset}- {key}: {str_value}'
                     )
