@@ -126,7 +126,7 @@ gendiff -h
 <a name = "authors"></a>
 ## ✍️ Authors
 
-[@Pythonusus](https://github.com/kylelobo)
+[@Pythonusus](https://github.com/Pythonusus)
 
 <a name = "logo"></a>
 ## Logo
