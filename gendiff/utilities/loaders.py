@@ -21,7 +21,7 @@ def load_empty_file(_):
 
     Args:
         _ (str): _ argument is passed to make load_empty_file function usage
-                 similar to other loaders in this module. However, no files are
+                 similar to other loaders in this module. However, no file is
                  opened.
 
     Returns:
