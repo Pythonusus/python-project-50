@@ -30,6 +30,13 @@ def load_empty_file(_):
     return {}
 
 
+def get_file_extension(file_path):
+    parts = file_path.split('.')
+    if len(parts) == 1 or parts[-1] == '':
+        return ''
+    return parts[-1]
+
+
 def select_loader(file_path):
     if is_empty_file(file_path):
         return load_empty_file
@@ -37,3 +44,6 @@ def select_loader(file_path):
         return load_json
     if file_path.endswith('yaml') or file_path.endswith('yml'):
         return load_yaml
+
+    file_extension = get_file_extension(file_path)
+    raise ValueError(f'Unsupported file extension: {file_extension}')
