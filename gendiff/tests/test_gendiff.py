@@ -90,3 +90,13 @@ def test_gendiff_one_empty_file(file_path1, file_path2, expected_file_path):
 @pytest.mark.parametrize('formatter', [*FORMATTERS.keys()])
 def test_gendiff_two_empty_files(formatter):
     assert generate_diff(EMPTY_JSON, EMPTY_YAML, formatter) == ''
+
+
+@pytest.mark.parametrize('file_path1, file_path2, expected_message', [
+    (UNSUPPORTED_FILE_EXT1, FLAT2_JSON, 'Unsupported file extension: mp3'),
+    (FLAT1_YAML, UNSUPPORTED_FILE_EXT2, 'Unsupported file extension: '),
+])
+def test_unsupported_extension(file_path1, file_path2, expected_message):
+    with pytest.raises(ValueError) as exception:
+        generate_diff(file_path1, file_path2)
+    assert str(exception.value) == expected_message
