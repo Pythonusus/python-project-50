@@ -52,3 +52,8 @@ def select_loader(file_path):
 
     file_extension = get_file_extension(file_path)
     raise ValueError(f'Unsupported file extension: {file_extension}')
+
+
+def load_file_data(file_path):
+    loader = select_loader(file_path)
+    return loader(file_path)
