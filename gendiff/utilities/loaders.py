@@ -4,8 +4,8 @@ import os
 import yaml
 
 
-def is_empty_file(path_to_file):
-    stats = os.stat(path_to_file)
+def is_empty_file(file_path):
+    stats = os.stat(file_path)
     return True if stats.st_size == 0 else False
 
 
