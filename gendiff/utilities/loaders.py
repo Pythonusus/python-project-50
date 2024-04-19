@@ -1,7 +1,12 @@
 import json
+import os
 
 import yaml
-from gendiff.utilities.is_empty_file import is_empty_file
+
+
+def is_empty_file(path_to_file):
+    stats = os.stat(path_to_file)
+    return True if stats.st_size == 0 else False
 
 
 def load_json(file_path):
