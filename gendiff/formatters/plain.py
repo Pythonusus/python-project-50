@@ -1,4 +1,4 @@
-from gendiff.utilities.edit_result_string import edit_result_string
+from gendiff.formatters.edit_result_string import edit_result_string
 
 
 def stringify(value):
